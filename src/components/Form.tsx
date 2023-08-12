@@ -1,7 +1,14 @@
 import { FormEvent } from "react";
 
+export interface CustomFormData {
+    firstName: string;
+    lastName: string;
+    emailId: string;
+    password: string;
+    checkMeOut: boolean;
+}
 interface Props {
-    onSubmit: (event: FormEvent, data: object) => void;
+    onSubmit: (event: FormEvent, data: CustomFormData) => void;
 }
 function Form({ onSubmit }: Props) {
     const handleSubmission = (e: FormEvent) => {

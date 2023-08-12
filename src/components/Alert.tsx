@@ -1,15 +1,21 @@
-import { ReactNode } from "react";
+import { ReactNode, MouseEvent } from "react";
 interface Props {
     children: ReactNode;
-    onClose: () => void;
+    withCloseBtn: boolean;
+    onClose: (event: MouseEvent) => void;
 }
-const Alert = ({ children, onClose }: Props) => {
+const Alert = ({ children, onClose, withCloseBtn }: Props) => {
     return (
         <>
-            <div className="alert alert-primary alert-dismissible" role="alert">
+            {withCloseBtn ? <div className="alert alert-primary alert-dismissible" role="alert">
                 {children}
-                <button onClick={onClose} type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div></>
+                <button onClick={(e) => onClose(e)} type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div> :
+                <div className="alert alert-primary" role="alert">
+                    {children}
+                </div>
+            }
+        </>
     )
 }
 

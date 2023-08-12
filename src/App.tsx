@@ -1,13 +1,21 @@
 import ListGroup from "./components/ListGroup";
 import Alert from "./components/Alert";
 import Button from "./components/Button";
-import Form from "./components/Form";
+import Form, { CustomFormData } from "./components/Form";
 import { FormEvent, Fragment, useState } from "react";
+
 
 function App() {
   const [visibilityState, setVisibilityState] = useState(false);
   const [DivisionNameVisible, setDivisionNameVisibl] = useState(false);
   const [divisionDetails, setDivisionDetails] = useState(<></>)
+  const [formData, setFormData] = useState<CustomFormData>({
+    firstName: " ",
+    lastName: " ",
+    emailId: " ",
+    password: " ",
+    checkMeOut: false
+  })
   let lists = [
     "Dhaka",
     "Khulna",
@@ -35,24 +43,36 @@ function App() {
     setDivisionDetails(msg)
     setDivisionNameVisibl(true)
   }
-  const handleSubmission = (e: FormEvent, data: object) => {
+  const handleSubmission = (e: FormEvent, data: CustomFormData) => {
+    e.preventDefault();
     console.log(data)
+    setFormData(data);
   }
   return (
     <Fragment>
       <section>
         <div>
           <ListGroup lists={lists} heading="Divisions" onSelected={handleSelectedItem} />
-          {visibilityState && <Alert onClose={() => setVisibilityState(false)} children="Hello World" />}
+          {visibilityState && <Alert withCloseBtn onClose={() => setVisibilityState(false)} children="Hello World" />}
 
           <Button label="Show Alert" buttonType="danger" onClick={() => { setVisibilityState(true) }} />
 
-          {DivisionNameVisible && <Alert onClose={() => { setDivisionNameVisibl(false); }} children={divisionDetails} />}
+          {DivisionNameVisible && <Alert withCloseBtn onClose={() => { setDivisionNameVisibl(false); }} children={divisionDetails} />}
         </div>
       </section>
 
       <section>
         <Form onSubmit={handleSubmission} />
+
+        {formData.firstName.length > 3 && <Alert withCloseBtn={false} onClose={(e) => { console.log(e) }} children={
+          <>
+            <h1>Hi.. {formData.firstName + " " + formData.lastName}</h1>
+            <br />
+            {formData.emailId.length > 1 ? <p><strong>Your email address: </strong> {formData.emailId}</p> : <i>ENTER YOUR MAIL</i>}
+            <br />
+            <h6>Thanks for submitting your informations</h6>
+          </>}
+        />}
       </section>
     </Fragment>
 
