@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+ul {
+  height: 50vh;
+  border-bottom: 2px dashed #ccc;
+  overflow-y: scroll;
+  margin-bottom: 30px !important;
+}
+li {
+  cursor: pointer;
+  margin: 5px 0px;
+  transition: all linear 250ms;
+}
+
+li:hover {
+  font-size: larger;
+  font-weight: 600;
+}
+div.alert {
+  scale: 0.9;
+  transition: all linear 250ms;
+  cursor: pointer;
+}
