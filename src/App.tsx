@@ -1,7 +1,8 @@
 import ListGroup from "./components/ListGroup";
 import Alert from "./components/Alert";
 import Button from "./components/Button";
-import { useState } from "react";
+import Form from "./components/Form";
+import { FormEvent, Fragment, useState } from "react";
 
 function App() {
   const [visibilityState, setVisibilityState] = useState(false);
@@ -34,16 +35,27 @@ function App() {
     setDivisionDetails(msg)
     setDivisionNameVisibl(true)
   }
+  const handleSubmission = (e: FormEvent, data: object) => {
+    console.log(data)
+  }
   return (
+    <Fragment>
+      <section>
+        <div>
+          <ListGroup lists={lists} heading="Divisions" onSelected={handleSelectedItem} />
+          {visibilityState && <Alert onClose={() => setVisibilityState(false)} children="Hello World" />}
 
-    <div>
-      <ListGroup lists={lists} heading="Divisions" onSelected={handleSelectedItem} />
-      {visibilityState && <Alert onClose={() => setVisibilityState(false)} children="Hello World" />}
+          <Button label="Show Alert" buttonType="danger" onClick={() => { setVisibilityState(true) }} />
 
-      <Button label="Show Alert" buttonType="danger" onClick={() => { setVisibilityState(true) }} />
+          {DivisionNameVisible && <Alert onClose={() => { setDivisionNameVisibl(false); }} children={divisionDetails} />}
+        </div>
+      </section>
 
-      {DivisionNameVisible && <Alert onClose={() => { setDivisionNameVisibl(false); }} children={divisionDetails} />}
-    </div>
+      <section>
+        <Form onSubmit={handleSubmission} />
+      </section>
+    </Fragment>
+
   );
 }
 
