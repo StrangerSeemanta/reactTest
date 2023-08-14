@@ -18,7 +18,7 @@ function Form({ onSubmit }: Props) {
             lastName: (form.elements.namedItem("inputLastname") as HTMLInputElement).value,
             emailId: (form.elements.namedItem("inputEmail") as HTMLInputElement).value,
             password: (form.elements.namedItem("inputPassword") as HTMLInputElement).value,
-            checkMeOut: (form.elements.namedItem("gridCheck") as HTMLInputElement).checked,
+            checkMeOut: (form.elements.namedItem("checkMeOut") as HTMLInputElement).checked,
         };
 
         // Call the prop function with the form data
@@ -31,24 +31,24 @@ function Form({ onSubmit }: Props) {
 
                 <div className="col-md-6">
                     <label htmlFor="inputFirstName" className="form-label">First Name</label>
-                    <input name="firstName" type="text" className="form-control" id="inputFirstName" />
+                    <input name="inputFirstName" type="text" className="form-control" />
                 </div>
                 <div className="col-md-6">
                     <label htmlFor="inputLastname" className="form-label">Last Name</label>
-                    <input name="lastName" type="text" className="form-control" id="inputLastname" />
+                    <input name="inputLastname" type="text" className="form-control" />
                 </div>
                 <div className="col-6">
                     <label htmlFor="inputEmail" className="form-label">Email ID</label>
-                    <input name="emailId" type="email" className="form-control" id="inputEmail" placeholder="id@example.com" />
+                    <input name="inputEmail" type="email" className="form-control" placeholder="id@example.com" />
                 </div>
                 <div className='col-6'>
                     <label htmlFor="inputPassword" className='form-label'>Password</label>
-                    <input name="password" type="password" className='form-control' id='inputPassword' />
+                    <input name="inputPassword" type="password" className='form-control' />
                 </div>
                 <div className="col-12">
                     <div className="form-check">
-                        <input name="checkMeOut" className="form-check-input" type="checkbox" id="gridCheck" />
-                        <label className="form-check-label" htmlFor="gridCheck">
+                        <input name="checkMeOut" className="form-check-input" type="checkbox" />
+                        <label className="form-check-label" htmlFor="checkMeOut">
                             Check me out
                         </label>
                     </div>

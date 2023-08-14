@@ -64,7 +64,7 @@ function App() {
       <section>
         <Form onSubmit={handleSubmission} />
 
-        {formData.firstName.length > 3 && <Alert withCloseBtn={false} onClose={(e) => { console.log(e) }} children={
+        {formData.firstName.length > 3 && <Alert withCloseBtn={false} onClose={() => { return null; }} children={
           <>
             <h1>Hi.. {formData.firstName + " " + formData.lastName}</h1>
             <br />
