@@ -1,4 +1,3 @@
-import { time } from 'console';
 import React, { useEffect, useRef, useState } from 'react';
 interface Props {
     animate: boolean;

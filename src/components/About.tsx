@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { gsap } from 'gsap';
 import Codepen from './Codepen'
 import Article from './Common/Article';
 import Card from './Common/Card';

@@ -1,6 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
 import "./scss/Navbar.css"
-import { setTimeout } from "timers/promises";
 
 interface Props {
     logo?: {
