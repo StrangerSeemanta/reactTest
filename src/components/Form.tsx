@@ -1,4 +1,5 @@
 import { FormEvent } from "react";
+import Button from "./Button";
 
 export interface CustomFormData {
     firstName: string;
@@ -7,9 +8,12 @@ export interface CustomFormData {
     password: string;
     checkMeOut: boolean;
 }
+
 interface Props {
     onSubmit: (event: FormEvent, data: CustomFormData) => void;
 }
+
+// Main Component
 function Form({ onSubmit }: Props) {
     const handleSubmission = (e: FormEvent) => {
         const form = e.target as HTMLFormElement;
@@ -31,30 +35,32 @@ function Form({ onSubmit }: Props) {
 
                 <div className="col-md-6">
                     <label htmlFor="inputFirstName" className="form-label">First Name</label>
-                    <input name="inputFirstName" type="text" className="form-control" />
+                    <input pattern="^[A-Za-z]+$" name="inputFirstName" id='inputFirstName' type="text" className="form-control" />
                 </div>
                 <div className="col-md-6">
                     <label htmlFor="inputLastname" className="form-label">Last Name</label>
-                    <input name="inputLastname" type="text" className="form-control" />
+                    <input name="inputLastname" id="inputLastname" type="text" className="form-control" />
                 </div>
                 <div className="col-6">
                     <label htmlFor="inputEmail" className="form-label">Email ID</label>
-                    <input name="inputEmail" type="email" className="form-control" placeholder="id@example.com" />
+                    <input name="inputEmail" id="inputEmail" type="email" className="form-control" placeholder="id@example.com" />
                 </div>
                 <div className='col-6'>
                     <label htmlFor="inputPassword" className='form-label'>Password</label>
-                    <input name="inputPassword" type="password" className='form-control' />
+                    <input name="inputPassword" id="inputPassword" type="password" className='form-control' />
                 </div>
                 <div className="col-12">
                     <div className="form-check">
-                        <input name="checkMeOut" className="form-check-input" type="checkbox" />
+                        <input name="checkMeOut" id="checkMeOut" className="form-check-input" type="checkbox" />
                         <label className="form-check-label" htmlFor="checkMeOut">
                             Check me out
                         </label>
                     </div>
                 </div>
                 <div className="col-12">
-                    <button type="submit" className="btn btn-success">Sign in</button>
+
+                    <Button btnType="submit" Colors="success" label="Sign Up" />
+                    <Button btnType="button" Colors="light" btnId="showpass" label='show pass' />
                 </div>
             </form >
         </>

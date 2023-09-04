@@ -5,6 +5,7 @@ interface Props {
     onClose: (event: MouseEvent) => void;
 }
 const Alert = ({ children, onClose, withCloseBtn }: Props) => {
+
     return (
         <>
             {withCloseBtn ? <div className="alert alert-primary alert-dismissible" role="alert">

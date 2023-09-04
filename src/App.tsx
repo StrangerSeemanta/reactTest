@@ -3,7 +3,8 @@ import Alert from "./components/Alert";
 import Button from "./components/Button";
 import Form, { CustomFormData } from "./components/Form";
 import { FormEvent, Fragment, useState } from "react";
-
+import Game from './tictac'
+import './App.css'
 
 function App() {
   const [visibilityState, setVisibilityState] = useState(false);
@@ -19,7 +20,7 @@ function App() {
   let lists = [
     "Dhaka",
     "Khulna",
-    "Barisal",
+    "America",
     "Sylhet",
     "Mymensingh",
     "Rangpur",
@@ -55,7 +56,7 @@ function App() {
           <ListGroup lists={lists} heading="Divisions" onSelected={handleSelectedItem} />
           {visibilityState && <Alert withCloseBtn onClose={() => setVisibilityState(false)} children="Hello World" />}
 
-          <Button label="Show Alert" buttonType="danger" onClick={() => { setVisibilityState(true) }} />
+          <Button label="Show Alert" btnType="button" Colors="danger" onClick={() => { setVisibilityState(true) }} />
 
           {DivisionNameVisible && <Alert withCloseBtn onClose={() => { setDivisionNameVisibl(false); }} children={divisionDetails} />}
         </div>
@@ -73,6 +74,11 @@ function App() {
             <h6>Thanks for submitting your informations</h6>
           </>}
         />}
+
+
+      </section>
+      <section>
+        <Game />
       </section>
     </Fragment>
 

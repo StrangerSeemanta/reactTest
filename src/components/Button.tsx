@@ -1,19 +1,19 @@
-import { ReactNode, useState } from "react"
-import Alert from "./Alert";
 
 interface Props {
-    buttonType: string;
+    btnType: "button" | "submit" | "reset" | undefined;
+    Colors: string;
     label: string;
-    onClick: () => void;
+    onClick?: () => void;
+    btnId?: string;
 }
-function Button({ buttonType, label, onClick }: Props) {
-    const availableButtonTypes = ['primary', 'secondary', 'success', 'danger', 'warning', 'dark', 'light', 'info'];
+function Button({ btnType, Colors, label, btnId, onClick }: Props) {
+    const availableColors = ['primary', 'secondary', 'success', 'danger', 'warning', 'dark', 'light', 'info'];
     return (
         <>
             <div className="btn-group">
-                <button type="button" className={
-                    availableButtonTypes.includes(buttonType) ?
-                        "btn btn-" + buttonType :
+                <button id={btnId} type={btnType} className={
+                    availableColors.includes(Colors) ?
+                        "btn btn-" + Colors :
                         "btn btn-primary"
                 }
                     onClick={onClick}>
